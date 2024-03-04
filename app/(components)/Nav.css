@@ -1,0 +1,9 @@
+#navbar-default {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease;
+}
+
+#navbar-default.open {
+  max-height: 500px; /* Adjust as needed */
+}

@@ -1,0 +1,9 @@
+.video {
+  object-position: 0px -180px;
+}
+
+@media (max-width: 900px) {
+  .video {
+    object-position: 0px 0px;
+  }
+}
