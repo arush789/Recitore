@@ -1,6 +1,6 @@
 "use client";
+import React from "react";
 import { useSession } from "next-auth/react"
-import options from "@/app/api/auth/[...nextauth]/options";
 import { redirect } from "next/navigation";
 
 import { Urbanist } from "next/font/google";
@@ -10,9 +10,10 @@ const RecipeCreate = () => {
     const { data: session } = useSession({
         required: true,
         onUnauthenticated() {
-            redirect("/api/auth/signin?callbackUrl=/RecipeCreate/new")
+            redirect("/api/auth/signin?callbackUrl=/RecipeCreate")
         }
     })
+
     return (
         <div className={`${urbanist.className}  flex flex-col gap-10`}>
             <div className="flex text-center justify-center text-3xl font-bold py-10 w-full lg:text-6xl lg:justify-normal lg:px-20 lg:py-20 sm:text-4xl ">

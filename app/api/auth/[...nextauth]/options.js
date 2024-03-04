@@ -14,6 +14,7 @@ const options = {
 
         return {
           ...profile,
+          image: profile.avatar_url,
           role: userRole,
         };
       },
@@ -28,6 +29,7 @@ const options = {
 
         return {
           ...profile,
+          image: profile.picture,
           id: profile.sub,
           role: userRole,
         };
