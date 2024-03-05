@@ -38,6 +38,10 @@ const options = {
       clientSecret: process.env.GOOGLE_SECRET,
     }),
   ],
+  pages: {
+    signIn: "/auth/signIn",
+  },
+
   callbacks: {
     async jwt({ user, token }) {
       if (user) token.role = user.role;
