@@ -1,18 +1,31 @@
 "use client"
 import { signIn, useSession } from 'next-auth/react';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 import { Urbanist } from "next/font/google";
+import { redirect } from 'next/navigation';
+import Loading from '@/app/(components)/Loading';
+
+import GoogleIcon from '@mui/icons-material/Google';
+import GitHubIcon from '@mui/icons-material/GitHub';
+
 const urbanist = Urbanist({ subsets: ["latin"] });
 
 const LoginPage = () => {
     const { data: session } = useSession();
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        if (session) {
-            window.location.href = '/';
-        }
-    }, [session]);
+        const timer = setTimeout(() => {
+            setLoading(false);
+        }, 2000);
+
+        return () => clearTimeout(timer);
+    }, []);
+
+    if (session) {
+        redirect("/");
+    }
 
     const handleGoogleSignIn = () => {
         signIn('google');
@@ -22,8 +35,13 @@ const LoginPage = () => {
         signIn('github');
     };
 
+    if (loading) {
+        return <Loading />;
+    }
+
+
     return (
-        <div class="flex justify-center text-nav-text relative items-center h-screen w-full">
+        <div class="flex justify-center text-nav-text relative items-center h-screen lg:h-[calc(100vh-100px)] w-full">
             <div className={`${urbanist.className} flex justify-center w-full items-center`}>
                 <div className="absolute inset-0 z-0 bg-cover bg-center bg-opacity-50" style={{ backgroundImage: "url('/images/loginBg.jpg')", height: "100%", filter: "brightness(50%)" }} />
                 <div className='hidden z-40 lg:flex lg:flex-col text-nav lg:gap-20 lg:w-2/4'>
@@ -65,8 +83,8 @@ const LoginPage = () => {
                         </div>
                         <h1 className=' text-center'>Or</h1>
                         <div className='flex flex-col gap-4'>
-                            <button onClick={handleGoogleSignIn} className='bg-red-600 p-3 rounded-md text-white'>Sign in with Google</button>
-                            <button onClick={handleGithubSignIn} className='bg-blue-400 p-3 rounded-md text-white'>Sign in with GitHub</button>
+                            <button onClick={handleGoogleSignIn} className='bg-red-600 p-3 rounded-md text-white'><GoogleIcon /> Google</button>
+                            <button onClick={handleGithubSignIn} className='bg-blue-400 p-3 rounded-md text-white'><GitHubIcon /> GitHub</button>
                         </div>
                     </div>
                 </div>

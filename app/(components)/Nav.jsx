@@ -6,7 +6,6 @@ import { useSession } from 'next-auth/react';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import Image from 'next/image'
 import "./Nav.css"
-import Loading from './Loading';
 
 const dancingScript = Dancing_Script({ subsets: ["latin"] });
 
@@ -16,13 +15,7 @@ const Nav = () => {
   })
 
   const [menuClass, setMenuClass] = useState("mob-header-menu");
-  const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 1000);
-  }, []);
 
   function handleMenuToggle() {
     setMenuClass(prevClass => prevClass === "mob-header-menu" ? "mob-header-menu active-menu" : "mob-header-menu")
@@ -34,15 +27,15 @@ const Nav = () => {
         <Link href="/" className={`brand-name ${dancingScript.className} font-bold text-5xl`}>Recitore</Link>
         <div className='links flex items-center gap-5 text-nav-text'>
           <ul>
-            <li><Link href="/RecipePage/1">Recipes</Link></li>
-            <li><Link href="/RecipeCreate">Create</Link></li>
+            <li><Link href="/RecipePage" className='hover:font-bold'>Recipes</Link></li>
+            <li><Link href="/YourRecipes" className='hover:font-bold'>Your Recipes</Link></li>
           </ul>
           {session ?
-            <Link href="/api/auth/signout?callbackUrl=/">
-              {loading ? <Loading /> : <picture><Image src={session?.user?.image} width={40} height={20} className='rounded-full border-2 border-black' /></picture>}
+            <Link href="/Profile">
+              <Image src={session?.user?.image} width={40} height={20} className='rounded-full border-2 border-black' />
             </Link>
             :
-            <Link href="/api/auth/signin">{loading ? <Loading /> : <AccountCircleIcon />}</Link>
+            <Link href="/api/auth/signin"><AccountCircleIcon /></Link>
           }
         </div>
       </div>
@@ -54,18 +47,18 @@ const Nav = () => {
           </svg>
 
           {session ?
-            <Link href="/api/auth/signout?callbackUrl=/">
-              {loading ? <Loading /> : <picture><Image src={session?.user?.image} width={40} height={20} className='rounded-full border-2 border-black' /></picture>}
+            <Link href="/Profile">
+              <Image src={session?.user?.image} width={40} height={20} className='rounded-full border-2 border-black' />
             </Link>
             :
-            <Link href="/api/auth/signin">{loading ? <Loading /> : <AccountCircleIcon />}</Link>
+            <Link href="/api/auth/signin"><AccountCircleIcon /></Link>
           }
         </div>
       </div>
       <div className={menuClass}>
         <ul>
-          <li><Link onClick={() => setMenuClass("mob-header-menu")} href="/RecipePage/1">Recipes</Link></li>
-          <li><Link onClick={() => setMenuClass("mob-header-menu")} href="/RecipeCreate">Create</Link></li>
+          <li><Link onClick={() => setMenuClass("mob-header-menu")} href="/RecipePage">Recipes</Link></li>
+          <li><Link onClick={() => setMenuClass("mob-header-menu")} href="/YourRecipes">Your Recipes</Link></li>
         </ul>
       </div>
     </header>
