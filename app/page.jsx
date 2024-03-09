@@ -8,6 +8,7 @@ import { getRecipes } from "./api/api";
 
 const Home = async () => {
   const { recipes } = await getRecipes()
+  const limitedRecipes = await recipes.filter((item, index) => index < 4);
   return (
     <div className={`relative ${urbanist.className}`}>
       <div className="w-full overflow-hidden h-full lg:h-96 sm:h-60">
@@ -22,7 +23,7 @@ const Home = async () => {
       <div className="py-20 flex flex-col gap-10">
         <h1 className={` text-center text-5xl font-bold`}>Most Viewed</h1>
         <div className="flex flex-col lg:h-96 items-center lg:justify-center lg:flex-row lg:gap-44 font-bold">
-          <RecipeCard recipes={recipes} />
+          <RecipeCard recipes={limitedRecipes} />
         </div>
       </div>
       <div className="flex absolute w-full bg-cover bg-center h-[calc(100vh-220px)] lg:h-[calc(100vh-400px)]" style={{ backgroundImage: "url('/images/homeImg.jpg')", filter: "brightness(85%)" }} />
