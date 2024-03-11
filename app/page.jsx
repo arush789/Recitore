@@ -19,7 +19,7 @@ const Home = async () => {
       <div className="w-full overflow-hidden h-[25rem] lg:h-96 sm:h-60 relative">
         <SearchData />
         <video autoPlay loop muted className='video filter brightness-75 absolute top-0 left-0 w-full h-full object-cover'>
-          <source src="videos/homeVideo2.mp4" type="video/mp4" />
+          <source src="/homeVideo2.mp4" type="video/mp4" />
         </video>
       </div>
       <div className="py-20 flex flex-col gap-10 ">
