@@ -8,6 +8,7 @@ import Loading from '@/app/(components)/Loading';
 
 import GoogleIcon from '@mui/icons-material/Google';
 import GitHubIcon from '@mui/icons-material/GitHub';
+import LoginLoading from '@/app/(components)/LoginLoading';
 
 const urbanist = Urbanist({ subsets: ["latin"] });
 
@@ -36,7 +37,7 @@ const LoginPage = () => {
     };
 
     if (loading) {
-        return <Loading />;
+        return <LoginLoading />;
     }
 
 
