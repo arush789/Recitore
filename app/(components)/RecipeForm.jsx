@@ -22,6 +22,7 @@ if (!firebase.apps.length) {
 
 import { Urbanist } from "next/font/google";
 import Loading from "./Loading";
+import Image from "next/image";
 const urbanist = Urbanist({ subsets: ["latin"] });
 
 const RecipeForm = () => {
@@ -159,7 +160,7 @@ const RecipeForm = () => {
                     {loading && <Loading />}
                     {imgURL && !loading && (
                         <div className="flex flex-col items-start gap-2">
-                            <img src={imgURL} alt="Uploaded" />
+                            <Image src={imgURL} alt="Uploaded" width={200} height={200} />
                             <button className="text-nav p-3 rounded-lg border bg-bgColor " onClick={handleRemoveImage}>Remove Image</button>
                         </div>
                     )}
