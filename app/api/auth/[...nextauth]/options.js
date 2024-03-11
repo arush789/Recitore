@@ -14,6 +14,7 @@ const options = {
 
         return {
           ...profile,
+          image: profile.avatar_url,
           role: userRole,
         };
       },
@@ -28,6 +29,7 @@ const options = {
 
         return {
           ...profile,
+          image: profile.picture,
           id: profile.sub,
           role: userRole,
         };
@@ -36,6 +38,10 @@ const options = {
       clientSecret: process.env.GOOGLE_SECRET,
     }),
   ],
+  pages: {
+    signIn: "/auth/signIn",
+  },
+
   callbacks: {
     async jwt({ user, token }) {
       if (user) token.role = user.role;
