@@ -30,7 +30,7 @@ const RecipeCreate = async () => {
                 </h1>
             </div>
             <div className="px-6 lg:px-20">
-                <div className="flex justify-between pr-2 lg:pr-10">
+                <div className="flex justify-between pr-2 lg:pr-10 ">
                     <h1 className="text-3xl font-bold lg:text-5xl">Your Recipes</h1>
                     <Link className="text-3xl lg:text-5xl" href="/Create">+</Link>
                 </div>
