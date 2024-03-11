@@ -32,7 +32,7 @@ const Nav = () => {
           </ul>
           {session ?
             <Link href="/Profile">
-              <Image src={session?.user?.image} width={40} height={20} className='rounded-full border-2 border-black' />
+              <Image src={session?.user?.image} width={40} height={20} className='rounded-full border-2 border-black' alt='user-image' />
             </Link>
             :
             <Link href="/api/auth/signin"><AccountCircleIcon /></Link>
@@ -48,7 +48,7 @@ const Nav = () => {
 
           {session ?
             <Link href="/Profile">
-              <Image src={session?.user?.image} width={40} height={20} className='rounded-full border-2 border-black' />
+              <Image src={session?.user?.image} width={40} height={20} className='rounded-full border-2 border-black' alt='user-image' />
             </Link>
             :
             <Link href="/api/auth/signin"><AccountCircleIcon /></Link>

@@ -1,6 +1,6 @@
 "use client"
 import { useSession } from "next-auth/react"
-import { useRouter } from "next/navigation"
+import { redirect, useRouter } from "next/navigation"
 import { useEffect, useState } from "react"
 import firebase from "firebase/compat/app";
 import "firebase/compat/storage";
@@ -33,7 +33,7 @@ const RecipeForm = () => {
 
     useEffect(() => {
         if (!session?.user?.name) {
-            router.push("/YourRecipes");
+            redirect("/YourRecipes");
         }
     }, [session]);
 
