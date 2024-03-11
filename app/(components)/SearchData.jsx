@@ -26,8 +26,8 @@ const SearchData = () => {
                 {searchData?.recipes?.length > 0 ?
                     <div className="absolute bg-nav h-72 z-40 w-[80%] lg:w-[70%] top-[10rem] lg:top-[15rem] rounded-lg overflow-auto py-8 px-2 border-2 border-black">
                         <div className="flex flex-col gap-5">
-                            {searchData.recipes.map((item) => (
-                                <Link href={`/RecipeDetail/${item._id}`}>
+                            {searchData.recipes.map((item, index) => (
+                                <Link href={`/RecipeDetail/${item._id}`} key={index}>
                                     <div className="flex flex-col lg:flex-row gap-2 items-center lg:items-start" key={item.id}>
                                         <picture>
                                             <Image src={item.imgURL} className="w-52 rounded-lg h-[150px] object-cover" alt={item.title} width={300} height={300} />
