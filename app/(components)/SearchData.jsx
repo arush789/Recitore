@@ -20,11 +20,11 @@ const SearchData = () => {
 
     return (
         <>
-            <div className="absolute z-30 h-[25rem] items-center lg:items-start lg:h-96 w-[100%] flex flex-col justify-center gap-3 lg:gap-5 lg:translate-x-10 lg:w-[80%]">
+            <div className="absolute z-30 h-[25rem] sm:h-60 items-center lg:items-start lg:h-96 w-[100%] flex flex-col justify-center gap-3 lg:gap-5 lg:translate-x-10 lg:w-[80%]">
                 <h1 className={`${urbanist.className} text-[2.5rem] lg:text-7xl font-semibold sm:text-4xl`}>Search any recipe</h1>
                 <input type="text" name="search" id="search" placeholder="Search..." className=' z-50 rounded-full p-3 w-70 lg:w-96 sm:96 bg-search-bar border-2 border-search-bar-border' onChange={handleSearch} />
                 {searchData?.recipes?.length > 0 ?
-                    <div className="absolute bg-nav h-72 z-40 w-[80%] lg:w-[70%] top-[10rem] lg:top-[15rem] rounded-lg overflow-auto py-8 px-2 border-2 border-black">
+                    <div className="absolute bg-nav h-72 z-40 w-[80%] lg:w-[70%] top-[16rem] sm:top-[10rem] md:top-[10rem] lg:top-[16rem] rounded-lg overflow-auto py-8 px-2 border-2 border-black">
                         <div className="flex flex-col gap-5">
                             {searchData.recipes.map((item, index) => (
                                 <Link href={`/RecipeDetail/${item._id}`} key={index}>
