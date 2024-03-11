@@ -7,7 +7,7 @@ const RecipeCard = async (data) => {
     return (
         <div className='flex justify-center gap-10 flex-wrap'>
             {data?.recipes?.map((item, index) => (
-                <Link href={`/RecipeDetail/${item._id}`}>
+                <Link href={`/RecipeDetail/${item._id}`} key={index} className='hover:scale-110 transition duration-80 ease-out'>
                     <div className='bg-nav rounded-3xl flex flex-col py-5 px-5 w-[20rem] gap-5' key={index}>
                         <div className='flex justify-center'>
                             <picture>

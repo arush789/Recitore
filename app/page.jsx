@@ -3,26 +3,28 @@ import "./page.css"
 
 import { Urbanist } from "next/font/google";
 const urbanist = Urbanist({ subsets: ["latin"] });
+
 import { getRecipes } from "./api/api";
+import SearchData from "./(components)/SearchData";
+import Link from "next/link";
 
 
 const Home = async () => {
   const { recipes } = await getRecipes()
-  const limitedRecipes = await recipes.filter((item, index) => index < 4);
+  const limitedRecipes = recipes.filter((item, index) => index < 4);
+
+
   return (
     <div className={`relative ${urbanist.className}`}>
       <div className="w-full overflow-hidden h-full lg:h-96 sm:h-60">
-        <div className='flex flex-col gap-5 h-56 items-center justify-center w-full absolute z-40 lg:w-9/12 lg:h-60 lg:translate-y-24 lg:translate-x-20 lg:justify-normal lg:items-baseline md:justify-center sm:justify-center sm:h-60 sm:items-center sm:flex-col sm:w-full'>
-          <h1 className={`${urbanist.className} text-4xl lg:text-7xl font-semibold sm:text-4xl`}>Search any recipe</h1>
-          <input type="text" name="serach" id="search" placeholder="Search..." className='rounded-full p-3 w-70 lg:w-96 sm:96 bg-search-bar border-2 border-search-bar-border' />
-        </div>
+        <SearchData />
         <video autoPlay loop muted className='video filter brightness-75'>
           <source src="videos/homeVideo2.mp4" type="video/mp4" />
         </video>
       </div>
-      <div className="py-20 flex flex-col gap-10">
+      <div className="py-20 flex flex-col gap-10 ">
         <h1 className={` text-center text-5xl font-bold`}>Most Viewed</h1>
-        <div className="flex flex-col lg:h-96 items-center lg:justify-center lg:flex-row lg:gap-44 font-bold">
+        <div className="flex flex-col items-center lg:justify-center lg:flex-row lg:gap-44 font-bold">
           <RecipeCard recipes={limitedRecipes} />
         </div>
       </div>
@@ -32,13 +34,18 @@ const Home = async () => {
           Discover mouthwatering dishes, step-by-step guides, and kitchen inspiration on our Recitore where every bite tells a story!
         </p>
       </div>
-      <div className={` hidden gap-10 py-20 px-10 font-bold lg:flex `}>
-        <div className="text-center text-nav-text bg-nav w-72 h-[calc(100vh-300px)] rounded-3xl p-5 ">
-          <h1 className="text-4xl">Filter</h1>
+      <div className={` hidden gap-10 py-20 px-10 font-bold lg:flex lg:flex-col lg:items-center w-full`}>
+        <div className="flex w-[80%]">
+          {/* <div className="text-center text-nav-text bg-nav w-72 h-[calc(100vh-300px)] rounded-3xl p-5 ">
+            <h1 className="text-4xl">Filter</h1>
+          </div> */}
+          <div className="p-5 flex flex-col gap-10 items-center">
+            <h1 className="text-4xl">Recipes</h1>
+            <RecipeCard recipes={recipes} />
+          </div>
         </div>
-        <div className="p-5 flex flex-col gap-10">
-          <h1 className="text-4xl">Recipes</h1>
-          <RecipeCard recipes={recipes} />
+        <div className="flex justify-center">
+          <Link href="/RecipePage" className="flex bg-nav text-nav-text p-2 rounded-lg hover:scale-110 transition duration-80 ease-out">View More</Link>
         </div>
       </div>
       <div className="lg:hidden flex w-full flex-col">
@@ -50,6 +57,7 @@ const Home = async () => {
           <RecipeCard recipes={recipes} />
         </div>
       </div>
+
     </div >
   );
 }

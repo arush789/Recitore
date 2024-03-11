@@ -1,7 +1,7 @@
 "use client"
 import { useSession } from "next-auth/react"
 import { useRouter } from "next/navigation"
-import { use, useState } from "react"
+import { useEffect, useState } from "react"
 import firebase from "firebase/compat/app";
 import "firebase/compat/storage";
 
@@ -29,6 +29,12 @@ const RecipeForm = () => {
     const [imgURL, setImgURL] = useState()
     const [loading, setLoading] = useState(false)
     const router = useRouter()
+
+    useEffect(() => {
+        if (!session?.user?.name) {
+            router.push("/YourRecipes");
+        }
+    }, [session]);
 
     const handleFileUpload = (e) => {
         const selectedFile = e.target.files[0]
@@ -117,6 +123,8 @@ const RecipeForm = () => {
 
     const [formData, setFormData] = useState(startingFormData)
 
+
+
     return (
         <div className={`${urbanist.className} flex justify-center py-20 font-bold`}>
             <form className="px-4 w-[90%] lg:px-20 flex flex-col gap-10 bg-nav text-nav-text rounded-lg py-10 lg:w-4/5" method="post" onSubmit={handleSubmit}>
@@ -127,10 +135,12 @@ const RecipeForm = () => {
                 </div>
                 <div className="flex flex-col gap-2">
                     <label className="text-3xl">Ingredients</label>
+                    <p>Add each ingredients in a new line</p>
                     <textarea rows="5" type="text" placeholder="Ingredients..." name="ingredients" onChange={handleChange} value={formData.ingredients} className="text-nav-text p-3 rounded-lg" />
                 </div>
                 <div className="flex flex-col gap-2">
                     <label className="text-3xl">Procedure</label>
+                    <p>Add each steps in a new line</p>
                     <textarea rows="5" type="text" placeholder="Procedure..." name="procedure" onChange={handleChange} value={formData.procedure} className="text-nav-text p-3 rounded-lg" />
                 </div>
                 <div className="flex flex-col gap-2">
