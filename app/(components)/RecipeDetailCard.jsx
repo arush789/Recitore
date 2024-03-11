@@ -29,7 +29,7 @@ const RecipeDetailCard = (data) => {
                             <div className='w-[20rem] lg:w-[30rem] flex justify-center lg:justify-normal'>
                                 <picture>
 
-                                    <Image src={data.recipe.imgURL} className='rounded-xl object-cover w-[18rem]  lg:w-[40rem] h-full ' width={400} height={400} />
+                                    <Image src={data.recipe.imgURL} className='rounded-xl object-cover w-[18rem]  lg:w-[40rem] h-full ' width={400} height={400} alt='recipe-image' />
 
                                 </picture>
                             </div>

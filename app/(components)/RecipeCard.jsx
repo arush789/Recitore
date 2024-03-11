@@ -13,7 +13,7 @@ const RecipeCard = async (data) => {
                         <div className='flex justify-center'>
                             <picture>
 
-                                <Image src={item.imgURL} className=' rounded-lg object-cover w-[265px] h-52' width={400} height={400} />
+                                <Image src={item.imgURL} className=' rounded-lg object-cover w-[265px] h-52' width={400} height={400} alt='recipe-image' />
 
                             </picture>
                         </div>

@@ -16,7 +16,7 @@ const RecipesList = (data) => {
                         <div className='flex justify-center'>
                             <picture>
 
-                                <Image src={item.imgURL} className=' rounded-lg object-cover w-[265px] h-52' width={500} height={500} />
+                                <Image src={item.imgURL} className=' rounded-lg object-cover w-[265px] h-52' width={500} height={500} alt='recipe-image' />
 
                             </picture>
                         </div>
