@@ -1,6 +1,7 @@
 import React from 'react'
 import StarBorderIcon from '@mui/icons-material/StarBorder';
 import StarIcon from '@mui/icons-material/Star';
+import Image from 'next/image';
 
 const RecipeDetailCard = (data) => {
     const formatTextWithBulletNumbers = (text) => {
@@ -27,7 +28,9 @@ const RecipeDetailCard = (data) => {
                         <div className=' w-full flex flex-col sm:flex-row lg:flex-row gap-5 lg:h-64'>
                             <div className='w-[20rem] lg:w-[30rem] flex justify-center lg:justify-normal'>
                                 <picture>
-                                    <img src={data.recipe.imgURL} className='rounded-xl object-cover w-[18rem]  lg:w-[40rem] h-full ' alt='recipe-image' />
+
+                                    <Image src={data.recipe.imgURL} className='rounded-xl object-cover w-[18rem]  lg:w-[40rem] h-full ' width={400} height={400} />
+
                                 </picture>
                             </div>
                             <div className='flex py-4 font-bold gap-5 flex-col lg:items-start  w-full lg:justify-start lg:gap-2 items-center '>

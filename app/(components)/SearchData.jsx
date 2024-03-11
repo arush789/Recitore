@@ -3,6 +3,7 @@ import { Urbanist } from "next/font/google";
 import { getRecipesBySearch } from "../api/api";
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 const urbanist = Urbanist({ subsets: ["latin"] });
 
 
@@ -29,7 +30,7 @@ const SearchData = () => {
                                 <Link href={`/RecipeDetail/${item._id}`} key={index}>
                                     <div className="flex flex-col lg:flex-row gap-2 items-center lg:items-start" key={item.id}>
                                         <picture>
-                                            <img src={item.imgURL} className="w-52 rounded-lg h-[150px] object-cover" alt={item.title} />
+                                            <Image src={item.imgURL} className="w-52 rounded-lg h-[150px] object-cover" alt={item.title} width={300} height={300} />
                                         </picture>
                                         <h1 className="text-nav-text text-2xl font-bold">{item.title}</h1>
                                     </div>
