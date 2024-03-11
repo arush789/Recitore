@@ -16,14 +16,14 @@ const Home = async () => {
 
   return (
     <div className={`relative ${urbanist.className}`}>
-      <div className="w-full overflow-hidden h-full lg:h-96 sm:h-60">
+      <div className="w-full overflow-hidden h-[25rem] lg:h-96 sm:h-60 relative">
         <SearchData />
-        <video autoPlay loop muted className='video filter brightness-75'>
+        <video autoPlay loop muted className='video filter brightness-75 absolute top-0 left-0 w-full h-full object-cover'>
           <source src="videos/homeVideo2.mp4" type="video/mp4" />
         </video>
       </div>
       <div className="py-20 flex flex-col gap-10 ">
-        <h1 className={` text-center text-5xl font-bold`}>Most Viewed</h1>
+        <h1 className={` text-center text-4xl font-bold lg:text-5xl`}>Most Viewed</h1>
         <div className="flex flex-col items-center lg:justify-center lg:flex-row lg:gap-44 font-bold">
           <RecipeCard recipes={limitedRecipes} />
         </div>
