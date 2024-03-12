@@ -6,6 +6,7 @@ mongoose.Promise = global.Promise;
 const recipeSchema = new Schema(
   {
     user: String,
+    userMail: String,
     title: String,
     ingredients: String,
     procedure: String,

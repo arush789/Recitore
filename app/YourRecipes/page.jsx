@@ -2,7 +2,7 @@
 import { Urbanist } from "next/font/google";
 import Link from "next/link";
 import { getRecipes } from "../api/api";
-import RecipeCard from "../(components)/RecipeCard";
+import RecipeCard from "../(components)/RecipeCards";
 import { getServerSession } from "next-auth";
 import options from "../api/auth/[...nextauth]/options";
 import { redirect } from "next/navigation";
@@ -16,6 +16,8 @@ const RecipeCreate = async () => {
     if (!session) {
         redirect("/api/auth/signin?callbackUrl=/YourRecipes")
     }
+
+    console.log(session)
 
     let { recipes } = await getRecipes()
 

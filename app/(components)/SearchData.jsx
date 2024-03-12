@@ -16,8 +16,6 @@ const SearchData = () => {
         setSearchData(recipe)
     }
 
-    console.log(searchData)
-
     return (
         <>
             <div className="absolute z-30 h-[25rem] sm:h-60 items-center lg:items-start lg:h-96 w-[100%] flex flex-col justify-center gap-3 lg:gap-5 lg:translate-x-10 lg:w-[80%]">
