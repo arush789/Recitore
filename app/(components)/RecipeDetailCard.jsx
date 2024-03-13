@@ -5,25 +5,27 @@ import Image from 'next/image';
 
 import { Urbanist } from "next/font/google";
 import ReviewCard from './ReviewCard';
+import { getServerSession } from 'next-auth';
+import options from '../api/auth/[...nextauth]/options';
 const urbanist = Urbanist({ subsets: ["latin"] });
 
-const RecipeDetailCard = (data) => {
-    const formatTextWithBulletNumbers = (text) => {
+const RecipeDetailCard = async (data) => {
 
+    const session = await getServerSession(options)
+
+    const formatTextWithBulletNumbers = (text) => {
         const lines = text.split('\n');
         let lineNumber = 1;
-
         const formattedText = lines.map((line) => {
-
             if (line.trim() !== '') {
                 return `${lineNumber++}. ${line.trim()}`;
             }
-
             return line;
         });
-
         return formattedText.join('\n');
     };
+
+    const userName = session?.user?.name
 
 
     return (
@@ -64,7 +66,7 @@ const RecipeDetailCard = (data) => {
                     </div>
                 </div>
             </div>
-            <ReviewCard id={data.recipe._id} />
+            <ReviewCard id={data.recipe._id} name={userName} />
         </>
     )
 }

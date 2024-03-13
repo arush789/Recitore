@@ -9,11 +9,30 @@ import { Button } from '@mui/material';
 import { useRouter } from 'next/navigation';
 import MoodIcon from '@mui/icons-material/Mood';
 import SentimentVeryDissatisfiedIcon from '@mui/icons-material/SentimentVeryDissatisfied';
+import firebase from "firebase/compat/app";
+import "firebase/compat/storage";
 
-const RemoveRecipe = ({ id }) => {
+const firebaseConfig = {
+    apiKey: `${process.env.FIREBASE_API_KEY}`,
+    authDomain: "recitore-f7ff4.firebaseapp.com",
+    projectId: "recitore-f7ff4",
+    storageBucket: "recitore-f7ff4.appspot.com",
+    messagingSenderId: "252005741069",
+    appId: "1:252005741069:web:9a8c678d23ffa46b73db44",
+};
+
+if (!firebase.apps.length) {
+    firebase.initializeApp(firebaseConfig);
+} else {
+    firebase.app();
+}
+
+const RemoveRecipe = ({ id, url }) => {
     const router = useRouter()
     const [hoverRemove, setHoverRemove] = useState(false);
     const [hoverCancel, setHoverCancel] = useState(false);
+
+
 
     const deleteRecipe = async () => {
         const res = await fetch(`http://localhost:3000/api/Recipes/${id}`, {
@@ -23,6 +42,8 @@ const RemoveRecipe = ({ id }) => {
             router.refresh()
         }
         handleClose()
+        const storageRef = firebase.storage().refFromURL(url);
+        storageRef.delete()
     };
 
     const [open, setOpen] = React.useState(false);
@@ -60,7 +81,7 @@ const RemoveRecipe = ({ id }) => {
                         </DialogContentText>
                     </DialogContent>
                     <DialogActions >
-                        <div className='flex justify-between w-full'>
+                        <div className='lg:flex justify-between w-full hidden'>
                             <Button
                                 onClick={handleClose}
                                 onMouseEnter={() => setHoverCancel(true)}
@@ -77,6 +98,21 @@ const RemoveRecipe = ({ id }) => {
                                 className={`font-bold text-red-600 ${hoverRemove ? 'text-red-800' : ''}`}
                             >
                                 {hoverRemove ? <SentimentVeryDissatisfiedIcon /> : 'Remove'}
+                            </Button>
+                        </div>
+                        <div className='flex justify-between w-full lg:hidden'>
+                            <Button
+                                className={`font-bold`}
+                                onClick={handleClose}
+                            >
+                                Cancel
+                            </Button>
+                            <Button
+                                onClick={deleteRecipe}
+                                autoFocus
+                                className={`font-bold text-red-600 ${hoverRemove ? 'text-red-800' : ''}`}
+                            >
+                                Remove
                             </Button>
                         </div>
                     </DialogActions>

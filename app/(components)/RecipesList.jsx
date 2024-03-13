@@ -22,7 +22,7 @@ const RecipesList = (data) => {
                         <div className='flex flex-col gap-2 ml-4'>
                             <h1 className='text-nav-text text-2xl'>{item.title}</h1>
                             <p className='text-gray-500'>Added on: {formatDate(item.createdAt)}</p>
-                            <RemoveRecipe id={item._id} />
+                            <RemoveRecipe id={item._id} url={item.imgURL} />
                         </div>
                     </div>
                 ))

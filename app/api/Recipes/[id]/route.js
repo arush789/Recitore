@@ -1,4 +1,5 @@
 import Recipe from "@/app/(models)/recipes";
+import Review from "@/app/(models)/reviews";
 import { NextResponse } from "next/server";
 
 export async function DELETE(req, { params }) {
