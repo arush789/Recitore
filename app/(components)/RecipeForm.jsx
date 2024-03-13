@@ -119,6 +119,7 @@ const RecipeForm = () => {
         procedure: "",
         category: "",
         user: `${session?.user?.name}`,
+        userMail: `${session?.user?.email}`,
         imageURL: ""
     }
 
@@ -155,12 +156,20 @@ const RecipeForm = () => {
                     <label className="text-3xl">Image</label>
                     <div className="relative">
                         <input type="file" name="upload-file" onChange={handleFileUpload} className="absolute top-0 left-0 w-full h-full opacity-0 cursor-pointer" />
-                        {!imgURL ? <button className="text-nav p-3 rounded-lg border bg-bgColor ">Upload Image</button> : <></>}
+                        {!imgURL ?
+                            <>
+                                <button className="text-nav p-3 rounded-lg border bg-bgColor ">Upload Image</button>
+                                <p>Wait for Image to load before submitting</p>
+                            </>
+                            :
+                            <></>
+                        }
+
                     </div>
                     {loading && <Loading />}
                     {imgURL && !loading && (
                         <div className="flex flex-col items-start gap-2">
-                            <Image src={imgURL} alt="Uploaded" width={200} height={200} />
+                            <Image src={imgURL} alt="Uploaded" className="w-96 " width={200} height={200} />
                             <button className="text-nav p-3 rounded-lg border bg-bgColor " onClick={handleRemoveImage}>Remove Image</button>
                         </div>
                     )}

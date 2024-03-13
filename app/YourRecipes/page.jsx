@@ -21,7 +21,7 @@ const RecipeCreate = async () => {
 
     let { recipes } = await getRecipes()
 
-    recipes = recipes.filter((item) => item.user == session?.user?.name)
+    recipes = recipes.filter((item) => item.userMail == session?.user?.email)
 
 
     return (
