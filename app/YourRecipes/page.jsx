@@ -2,7 +2,7 @@
 import { Urbanist } from "next/font/google";
 import Link from "next/link";
 import { getRecipes } from "../api/api";
-import RecipeCard from "../(components)/RecipeCard";
+import RecipeCard from "../(components)/RecipeCards";
 import { getServerSession } from "next-auth";
 import options from "../api/auth/[...nextauth]/options";
 import { redirect } from "next/navigation";
@@ -18,9 +18,7 @@ const RecipeCreate = async () => {
     }
 
     let { recipes } = await getRecipes()
-
-    recipes = recipes.filter((item) => item.user == session?.user?.name)
-
+    recipes = recipes.filter((item) => item.userMail == session?.user?.email)
 
     return (
         <div className={`${urbanist.className}  flex flex-col gap-10`}>

@@ -1,4 +1,4 @@
-import RecipeCard from "./(components)/RecipeCard";
+import RecipeCard from "./(components)/RecipeCards";
 import "./page.css"
 
 import { Urbanist } from "next/font/google";
@@ -12,6 +12,7 @@ import Link from "next/link";
 const Home = async () => {
   const { recipes } = await getRecipes()
   const limitedRecipes = recipes.filter((item, index) => index < 4);
+  const homelimitedRecipes = recipes.filter((item, index) => index < 8);
 
 
   return (
@@ -41,7 +42,7 @@ const Home = async () => {
           </div> */}
           <div className="p-5 flex flex-col gap-10 items-center">
             <h1 className="text-4xl">Recipes</h1>
-            <RecipeCard recipes={recipes} />
+            <RecipeCard recipes={homelimitedRecipes} />
           </div>
         </div>
         <div className="flex justify-center">
@@ -54,7 +55,7 @@ const Home = async () => {
           <button className="bg-nav px-5 py-2 rounded-2xl text-nav-text text-2xl">Filter</button>
         </div>
         <div>
-          <RecipeCard recipes={recipes} />
+          <RecipeCard recipes={homelimitedRecipes} />
         </div>
       </div>
 

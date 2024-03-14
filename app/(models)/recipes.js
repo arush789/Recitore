@@ -1,4 +1,5 @@
 import mongoose, { Schema } from "mongoose";
+import Review from "./reviews";
 
 mongoose.connect(process.env.MONGODB_URI);
 mongoose.Promise = global.Promise;
@@ -6,12 +7,14 @@ mongoose.Promise = global.Promise;
 const recipeSchema = new Schema(
   {
     user: String,
+    userMail: String,
     title: String,
     ingredients: String,
     procedure: String,
-    likes: Number,
+    ratings: Number,
     category: String,
     imgURL: String,
+    reviews: [Review.schema],
   },
   {
     timestamps: true,

@@ -4,7 +4,6 @@ import Link from 'next/link'
 import React from 'react'
 
 const RecipeCard = async (data) => {
-
     return (
         <div className='flex justify-center gap-10 flex-wrap'>
             {data?.recipes?.map((item, index) => (
@@ -18,8 +17,8 @@ const RecipeCard = async (data) => {
                             </picture>
                         </div>
                         <div className='flex flex-col justify-center gap-2'>
-                            <h1 className='text-nav-text text-2xl'>{item.title}</h1>
-                            <p className='text-gray-500'>Added by {item.user}</p>
+                            <h1 className='text-nav-text text-2xl font-bold'>{item.title}</h1>
+                            <p className='text-gray-500 font-bold'>Added by {item.user}</p>
                         </div>
                     </div>
                 </Link>
