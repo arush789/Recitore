@@ -6,8 +6,9 @@ mongoose.Promise = global.Promise;
 const reviewSchema = new Schema(
   {
     name: String,
+    email: String,
     review: String,
-    ratings: Number,
+    rating: Number,
   },
   {
     timestamps: true,

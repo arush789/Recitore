@@ -7,6 +7,7 @@ import { Urbanist } from "next/font/google";
 import ReviewCard from './ReviewCard';
 import { getServerSession } from 'next-auth';
 import options from '../api/auth/[...nextauth]/options';
+import Reviews from './Reviews';
 const urbanist = Urbanist({ subsets: ["latin"] });
 
 const RecipeDetailCard = async (data) => {
@@ -26,6 +27,7 @@ const RecipeDetailCard = async (data) => {
     };
 
     const userName = session?.user?.name
+    const userMail = session?.user?.email
 
 
     return (
@@ -66,7 +68,7 @@ const RecipeDetailCard = async (data) => {
                     </div>
                 </div>
             </div>
-            <ReviewCard id={data.recipe._id} name={userName} />
+            <ReviewCard id={data.recipe._id} name={userName} email={userMail} />
         </>
     )
 }

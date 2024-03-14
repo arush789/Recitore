@@ -27,3 +27,16 @@ export async function POST(req, { params }) {
     );
   }
 }
+
+export async function GET(req, { params }) {
+  try {
+    const { id } = params;
+    const recipe = await Recipe.findOne({ _id: id }).populate("reviews");
+    return NextResponse.json({ reviews: recipe.reviews }, { status: 200 });
+  } catch (error) {
+    return NextResponse.json(
+      { message: "Error retrieving reviews:", error },
+      { status: 500 }
+    );
+  }
+}

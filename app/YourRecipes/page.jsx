@@ -20,9 +20,7 @@ const RecipeCreate = async () => {
     console.log(session)
 
     let { recipes } = await getRecipes()
-
     recipes = recipes.filter((item) => item.userMail == session?.user?.email)
-
 
     return (
         <div className={`${urbanist.className}  flex flex-col gap-10`}>
