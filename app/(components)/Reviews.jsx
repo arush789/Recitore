@@ -28,8 +28,8 @@ const Reviews = async ({ recipeId }) => {
                 <div className='flex flex-col bg-nav w-[50rem] lg:w-full rounded-3xl py-5 px-5 text-nav-text'>
                     <div className='flex flex-col gap-5 '>
                         <h1 className='font-bold text-4xl'>Reviews</h1>
-                        {reviews.map((item) => (
-                            <div className='flex flex-col border-2 text-nav border-nav-text rounded-lg p-2 gap-5 bg-bgColor'>
+                        {reviews.map((item, index) => (
+                            <div className='flex flex-col border-2 text-nav border-nav-text rounded-lg p-2 gap-5 bg-bgColor' key={index}>
                                 <h1 className='text-xl font-bold'>{item.name}</h1>
                                 <p className='text-lg'>{item.review}</p>
                                 <div className='flex'>

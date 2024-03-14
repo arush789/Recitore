@@ -17,8 +17,6 @@ const RecipeCreate = async () => {
         redirect("/api/auth/signin?callbackUrl=/YourRecipes")
     }
 
-    console.log(session)
-
     let { recipes } = await getRecipes()
     recipes = recipes.filter((item) => item.userMail == session?.user?.email)
 
