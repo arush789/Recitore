@@ -35,7 +35,7 @@ const RemoveRecipe = ({ id, url }) => {
 
 
     const deleteRecipe = async () => {
-        const res = await fetch(`http://localhost:3000/api/Recipes/${id}`, {
+        const res = await fetch(`https://recitore.vercel.app/api/Recipes/${id}`, {
             method: "DELETE"
         });
         if (res.ok) {

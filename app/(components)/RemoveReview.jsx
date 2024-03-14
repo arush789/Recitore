@@ -18,7 +18,7 @@ const RemoveReview = ({ recipeId, reviewId }) => {
 
     const deleteReview = async () => {
         try {
-            const res = await fetch(`http://localhost:3000/api/Reviews/${reviewId}/${recipeId}`, {
+            const res = await fetch(`https://recitore.vercel.app/api/Reviews/${reviewId}/${recipeId}`, {
                 method: "DELETE"
             });
             if (res.ok) {
