@@ -6,10 +6,10 @@ import StarIcon from '@mui/icons-material/Star';
 const urbanist = Urbanist({ subsets: ["latin"] });
 
 
-const Reviews = async ({ id }) => {
+const Reviews = async ({ recipeId }) => {
 
-    const { reviews } = await getReviewsById(id);
 
+    const { reviews } = await getReviewsById(recipeId);
     const renderStars = (rating) => {
         const stars = [];
         for (let i = 0; i < 5; i++) {
@@ -24,8 +24,8 @@ const Reviews = async ({ id }) => {
 
     return (
         <>
-            <div className={`${urbanist.className} flex h-full w-full z-50`}>
-                <div className='flex flex-col bg-nav w-[50rem] lg:w-full rounded-3xl text-nav-text'>
+            <div className={`${urbanist.className} flex h-full w-full py-5 px-5 z-50`}>
+                <div className='flex flex-col bg-nav w-[50rem] lg:w-full rounded-3xl py-5 px-5 text-nav-text'>
                     <div className='flex flex-col gap-5 '>
                         <h1 className='font-bold text-4xl'>Reviews</h1>
                         {reviews.map((item) => (

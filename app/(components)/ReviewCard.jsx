@@ -48,6 +48,7 @@ const ReviewCard = ({ id, name, email }) => {
 
             router.refresh();
             router.push(`/RecipeDetail/${recipeId}`);
+            setReviewFormData(startingData)
         } catch (error) {
             console.error("Error submitting form:", error);
         }
@@ -80,7 +81,6 @@ const ReviewCard = ({ id, name, email }) => {
                             </div>
                             <button type="submit" className="bg-bgColor rounded-lg p-3 text-nav lg:w-52">Submit</button>
                         </form>
-                        <Reviews id={recipeId} />
                     </div>
                 </div>
             </div>

@@ -1,4 +1,4 @@
-import React from 'react'
+
 import StarBorderIcon from '@mui/icons-material/StarBorder';
 import StarIcon from '@mui/icons-material/Star';
 import Image from 'next/image';
@@ -8,6 +8,7 @@ import ReviewCard from './ReviewCard';
 import { getServerSession } from 'next-auth';
 import options from '../api/auth/[...nextauth]/options';
 import Reviews from './Reviews';
+import Link from 'next/link';
 const urbanist = Urbanist({ subsets: ["latin"] });
 
 const RecipeDetailCard = async (data) => {
@@ -68,7 +69,26 @@ const RecipeDetailCard = async (data) => {
                     </div>
                 </div>
             </div>
-            <ReviewCard id={data.recipe._id} name={userName} email={userMail} />
+            {!session ?
+                <div className='relative flex flex-col items-center'>
+                    <div className='absolute top-52 z-50 flex flex-col justify-center text-center gap-5'>
+                        <h1 className='text-3xl' >Login to see reviews</h1>
+                        <Link href="/api/auth/signin" className='bg-bgColor py-2 rounded-lg text-xl'>Login</Link>
+                    </div>
+                    <div className='w-full filter blur-md brightness-50 z-20 pointer-events-none'>
+                        <div>
+                            <ReviewCard id={data.recipe._id} name={userName} email={userMail} />
+                            <Reviews recipeId={data.recipe._id} />
+                        </div>
+                    </div>
+                </div>
+
+                :
+                <>
+                    <ReviewCard id={data.recipe._id} name={userName} email={userMail} />
+                    <Reviews recipeId={data.recipe._id} />
+                </>
+            }
         </>
     )
 }
