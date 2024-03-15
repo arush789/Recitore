@@ -12,13 +12,6 @@ export async function DELETE(req, { params }) {
       { new: true }
     );
 
-    if (!result || result.reviews.length === 0) {
-      await Recipe.findOneAndUpdate(
-        { _id: recipeId },
-        { $unset: { reviews: "" } }
-      );
-    }
-
     return NextResponse.json({ message: "Review deleted" }, { status: 200 });
   } catch (error) {
     return NextResponse.json(
