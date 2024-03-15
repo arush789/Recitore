@@ -12,8 +12,10 @@ const RecipePage = async () => {
         <hr className="bg-nav-text h-[5px] mx-10 rounded-lg" />
       </div>
       <div className="flex flex-col items-end w-[80%]">
-        <div className=" flex flex-col gap-10">
-          <h1 className="text-5xl font-bold lg:pl-20 ">Recipes</h1>
+        <div className=" flex flex-col gap-10 w-full">
+          <div className="w-full flex justify-start">
+            <h1 className="text-5xl font-bold lg:pl-20 ">Recipes</h1>
+          </div>
           <RecipeCard recipes={recipes.recipes} />
         </div>
       </div>

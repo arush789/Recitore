@@ -40,7 +40,7 @@ const Home = async () => {
           {/* <div className="text-center text-nav-text bg-nav w-72 h-[calc(100vh-300px)] rounded-3xl p-5 ">
             <h1 className="text-4xl">Filter</h1>
           </div> */}
-          <div className="p-5 flex flex-col gap-10 items-center">
+          <div className="p-5 flex flex-col gap-10 items-center w-[100%]">
             <h1 className="text-4xl">Recipes</h1>
             <RecipeCard recipes={homelimitedRecipes} />
           </div>
