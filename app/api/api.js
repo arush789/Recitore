@@ -11,7 +11,7 @@ export const getRecipes = async () => {
 
 export const getReviews = async () => {
   try {
-    const res = await fetch(`https://recitore.vercel.app/api/Reviews`, {
+    const res = await fetch(`https://recitore.vercel.app/api/Recipes`, {
       cache: "no-store",
     });
 
