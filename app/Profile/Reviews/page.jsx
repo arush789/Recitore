@@ -12,9 +12,9 @@ const ReviewsPage = async () => {
 
     let reviewsData = await getReviews()
     const userEmail = session?.user?.email;
-
     const userReviews = reviewsData.recipes.map(recipe => {
         const filteredReviews = recipe.reviews.filter(review => review.email === userEmail);
+
         return { recipeName: recipe.title, reviews: filteredReviews, recipeId: recipe._id };
     });
 
