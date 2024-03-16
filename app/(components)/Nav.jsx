@@ -28,10 +28,10 @@ const Nav = () => {
         <div className='links flex items-center gap-5 text-nav-text'>
           <ul>
             <li><Link href="/RecipePage" className='hover:font-bold'>Recipes</Link></li>
-            <li><Link href="/YourRecipes" className='hover:font-bold'>Your Recipes</Link></li>
+            <li><Link href="/Create" className='hover:font-bold'>Create</Link></li>
           </ul>
           {session ?
-            <Link href="/Profile">
+            <Link href="/Profile/YourRecipes">
               <Image src={session?.user?.image} width={40} height={20} className='rounded-full border-2 border-black' alt='user-image' />
             </Link>
             :
@@ -47,7 +47,7 @@ const Nav = () => {
           </svg>
 
           {session ?
-            <Link href="/Profile">
+            <Link href="/Profile/YourRecipes">
               <Image src={session?.user?.image} width={40} height={20} className='rounded-full border-2 border-black' alt='user-image' />
             </Link>
             :
@@ -58,7 +58,7 @@ const Nav = () => {
       <div className={menuClass}>
         <ul>
           <li><Link onClick={() => setMenuClass("mob-header-menu")} href="/RecipePage">Recipes</Link></li>
-          <li><Link onClick={() => setMenuClass("mob-header-menu")} href="/YourRecipes">Your Recipes</Link></li>
+          <li><Link onClick={() => setMenuClass("mob-header-menu")} href="/Create">Create</Link></li>
         </ul>
       </div>
     </header>

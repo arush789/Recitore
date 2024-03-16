@@ -9,11 +9,13 @@ import { getServerSession } from 'next-auth';
 import options from '../api/auth/[...nextauth]/options';
 import Reviews from './Reviews';
 import Link from 'next/link';
+import { getRecipeById } from '../api/api';
 const urbanist = Urbanist({ subsets: ["latin"] });
 
-const RecipeDetailCard = async (data) => {
+const RecipeDetailCard = async (recipeId) => {
 
     const session = await getServerSession(options)
+    const recipe = await getRecipeById(recipeId.recipeId)
 
     const formatTextWithBulletNumbers = (text) => {
         const lines = text.split('\n');
@@ -39,13 +41,13 @@ const RecipeDetailCard = async (data) => {
                         <div className=' w-full flex flex-col sm:flex-row lg:flex-row gap-5 lg:h-64'>
                             <div className='w-[20rem] lg:w-[30rem] flex justify-center lg:justify-normal'>
                                 <picture>
-                                    <Image src={data.recipe.imgURL} className='rounded-xl object-cover w-[18rem]  lg:w-[40rem] h-full ' width={400} height={400} alt='recipe-image' />
+                                    <Image src={recipe.recipe.imgURL} className='rounded-xl object-cover w-[18rem]  lg:w-[40rem] h-full ' width={400} height={400} alt='recipe-image' />
                                 </picture>
                             </div>
                             <div className='flex py-4 font-bold gap-5 flex-col lg:items-start  w-full lg:justify-start lg:gap-2 items-center '>
                                 <div className={`${urbanist.className} flex flex-col gap-1 w-full items-center lg:items-start`}>
-                                    <h1 className='text-3xl lg:text-4xl'>{data.recipe.title}</h1>
-                                    <p>Added by {data.recipe.user}</p>
+                                    <h1 className='text-3xl lg:text-4xl'>{recipe.recipe.title}</h1>
+                                    <p>Added by {recipe.recipe.user}</p>
                                 </div>
                                 <div className='flex'>
                                     <p><StarBorderIcon /></p>
@@ -60,11 +62,11 @@ const RecipeDetailCard = async (data) => {
                     <div className='text-nav-text flex flex-col gap-5 lg:px-5'>
                         <div className='flex flex-col gap-5'>
                             <h1 className={`${urbanist.className} font-bold text-4xl`}>Ingredients :</h1>
-                            <p className='text-xl whitespace-pre-line'>{formatTextWithBulletNumbers(data.recipe.ingredients)}</p>
+                            <p className='text-xl whitespace-pre-line'>{formatTextWithBulletNumbers(recipe.recipe.ingredients)}</p>
                         </div>
                         <div className='flex flex-col gap-5'>
                             <h1 className={`${urbanist.className} font-bold text-4xl`}>Prodcedure :</h1>
-                            <p className='text-xl whitespace-pre-line'>{formatTextWithBulletNumbers(data.recipe.procedure)}</p>
+                            <p className='text-xl whitespace-pre-line'>{formatTextWithBulletNumbers(recipe.recipe.procedure)}</p>
                         </div>
                     </div>
                 </div>
@@ -77,16 +79,16 @@ const RecipeDetailCard = async (data) => {
                     </div>
                     <div className='w-full filter blur-md brightness-50 z-20 pointer-events-none'>
                         <div>
-                            <ReviewCard id={data.recipe._id} name={userName} email={userMail} />
-                            <Reviews recipeId={data.recipe._id} />
+                            <ReviewCard id={recipe.recipe._id} name={userName} email={userMail} />
+                            <Reviews recipeId={recipe.recipe._id} />
                         </div>
                     </div>
                 </div>
 
                 :
                 <>
-                    <ReviewCard id={data.recipe._id} name={userName} email={userMail} />
-                    <Reviews recipeId={data.recipe._id} />
+                    <ReviewCard id={recipe.recipe._id} name={userName} email={userMail} />
+                    <Reviews recipeId={recipe.recipe._id} />
                 </>
             }
         </>

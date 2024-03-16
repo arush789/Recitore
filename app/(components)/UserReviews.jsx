@@ -13,7 +13,7 @@ const UserReviews = ({ reviews }) => {
                                 {item.reviews.length > 0 && (
                                     <>
                                         <h1 className='text-3xl font-bold'>{item.recipeName}</h1>
-                                        <div className='flex flex-col text-nav rounded-lg p-2 gap-5'>
+                                        <div className='flex flex-col text-nav rounded-lg  gap-5'>
                                             {item.reviews.map((review) => (
                                                 <div key={review._id} className='p-2 bg-bgColor border-nav-text border-2 rounded-2xl flex flex-col gap-2'>
                                                     <h1 className='text-xl font-bold'>{review.name}</h1>

@@ -11,9 +11,7 @@ const RecipeCard = async (data) => {
                     <div className='bg-nav rounded-3xl flex flex-col py-5 px-5 w-[20rem] gap-5' key={index}>
                         <div className='flex justify-center'>
                             <picture>
-
                                 <Image src={item.imgURL} className=' rounded-lg object-cover w-[265px] h-52' width={400} height={400} alt='recipe-image' />
-
                             </picture>
                         </div>
                         <div className='flex flex-col justify-center gap-2'>
