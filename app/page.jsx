@@ -31,7 +31,7 @@ const Home = async () => {
       </div>
       <div className="flex absolute w-full bg-cover bg-center h-[calc(100vh-220px)] lg:h-[calc(100vh-400px)]" style={{ backgroundImage: "url('/images/homeImg.jpg')", filter: "brightness(85%)" }} />
       <div className=" flex z-50 justify-center px-10 pt-10 pb-5 w-full lg:-translate-x-28 text-right lg:text-center items-center h-[calc(100vh-220px)] lg:h-[calc(100vh-400px)] lg:justify-end" style={{ zIndex: "50" }}>
-        <p className="text-3xl lg:w-[55%] font-bold leading-normal lg:leading-[5rem] lg:text-[3vw] text-bgColor relative" >
+        <p className="text-3xl lg:w-[55%] font-bold leading-normal lg:leading-[6rem] lg:text-[3vw] text-bgColor relative" >
           Discover mouthwatering dishes, step-by-step guides, and kitchen inspiration on our Recitore where every bite tells a story!
         </p>
       </div>
@@ -40,7 +40,7 @@ const Home = async () => {
           {/* <div className="text-center text-nav-text bg-nav w-72 h-[calc(100vh-300px)] rounded-3xl p-5 ">
             <h1 className="text-4xl">Filter</h1>
           </div> */}
-          <div className="p-5 flex flex-col gap-10 items-center">
+          <div className="p-5 flex flex-col gap-10 items-center w-[100%]">
             <h1 className="text-4xl">Recipes</h1>
             <RecipeCard recipes={homelimitedRecipes} />
           </div>

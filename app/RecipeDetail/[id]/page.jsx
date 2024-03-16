@@ -1,16 +1,11 @@
 import RecipeDetailCard from '@/app/(components)/RecipeDetailCard'
-import ReviewCard from '@/app/(components)/ReviewCard'
-import { getRecipeById } from '@/app/api/api'
 
 import React from 'react'
 
-const RecipeDetail = async ({ params }) => {
-
-    const recipe = await getRecipeById(params.id)
-
+const RecipeDetail = ({ params }) => {
     return (
         <div>
-            <RecipeDetailCard recipe={recipe.recipe} />
+            <RecipeDetailCard recipeId={params.id} />
         </div>
     )
 }
