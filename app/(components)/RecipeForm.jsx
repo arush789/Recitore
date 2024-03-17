@@ -33,7 +33,7 @@ const RecipeForm = () => {
 
     useEffect(() => {
         if (!session?.user?.name) {
-            redirect("/YourRecipes");
+            redirect("/api/auth/signin?callbackUrl=/YourRecipes");
         }
     }, [session]);
 

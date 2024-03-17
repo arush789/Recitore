@@ -1,28 +1,15 @@
 "use client"
 import { signIn, useSession } from 'next-auth/react';
-import { useEffect, useState } from 'react';
-
 import { Urbanist } from "next/font/google";
 import { redirect } from 'next/navigation';
-import Loading from '@/app/(components)/Loading';
 
 import GoogleIcon from '@mui/icons-material/Google';
 import GitHubIcon from '@mui/icons-material/GitHub';
-import LoginLoading from '@/app/(components)/LoginLoading';
 
 const urbanist = Urbanist({ subsets: ["latin"] });
 
 const LoginPage = () => {
     const { data: session } = useSession();
-    const [loading, setLoading] = useState(true);
-
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            setLoading(false);
-        }, 2000);
-
-        return () => clearTimeout(timer);
-    }, []);
 
     if (session) {
         redirect("/");
@@ -36,13 +23,8 @@ const LoginPage = () => {
         signIn('github');
     };
 
-    if (loading) {
-        return <LoginLoading />;
-    }
-
-
     return (
-        <div class="flex justify-center text-nav-text relative items-center h-screen lg:h-[calc(100vh-100px)] w-full">
+        <div className="flex justify-center text-nav-text relative items-center h-screen lg:h-[calc(100vh-100px)] w-full">
             <div className={`${urbanist.className} flex justify-center w-full items-center`}>
                 <div className="absolute inset-0 z-0 bg-cover bg-center bg-opacity-50" style={{ backgroundImage: "url('/images/loginBg.jpg')", height: "100%", filter: "brightness(50%)" }} />
                 <div className='hidden z-40 lg:flex lg:flex-col text-nav lg:gap-20 lg:w-2/4'>
