@@ -1,23 +1,16 @@
 
 import { Urbanist } from "next/font/google";
 import Link from "next/link";
-import RecipeCard from "../../(components)/RecipeCards";
-import { getServerSession } from "next-auth";
-import options from "../../api/auth/[...nextauth]/options";
-import { redirect } from "next/navigation";
 import RecipesList from "../../(components)/RecipesList";
 import { getRecipes } from "@/app/api/api";
 import UserDataLayout from "@/app/(components)/UserDataLayout";
+import { getServerSession } from "next-auth";
+import options from "@/app/api/auth/[...nextauth]/options";
 
 const urbanist = Urbanist({ subsets: ["latin"] });
 
 const RecipeCreate = async () => {
     const session = await getServerSession(options)
-
-    if (!session) {
-        redirect("/api/auth/signin?callbackUrl=/YourRecipes")
-    }
-
     let { recipes } = await getRecipes()
     recipes = recipes.filter((item) => item.userMail == session?.user?.email)
 
