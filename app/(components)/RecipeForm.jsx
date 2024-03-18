@@ -105,7 +105,7 @@ const RecipeForm = () => {
             }
 
             router.refresh();
-            router.push("/YourRecipes");
+            router.push("/");
         } catch (error) {
             console.error("Error submitting form:", error);
         } finally {
@@ -137,12 +137,12 @@ const RecipeForm = () => {
                 </div>
                 <div className="flex flex-col gap-2">
                     <label className="text-3xl">Ingredients</label>
-                    <p>Add each ingredients in a new line</p>
+                    <p><b>NOTE</b> :- Add each ingredients in a new line</p>
                     <textarea rows="5" type="text" placeholder="Ingredients..." name="ingredients" onChange={handleChange} value={formData.ingredients} className="text-nav-text p-3 rounded-lg" />
                 </div>
                 <div className="flex flex-col gap-2">
                     <label className="text-3xl">Procedure</label>
-                    <p>Add each steps in a new line</p>
+                    <p><b>NOTE</b> :- Add each steps in a new line</p>
                     <textarea rows="5" type="text" placeholder="Procedure..." name="procedure" onChange={handleChange} value={formData.procedure} className="text-nav-text p-3 rounded-lg" />
                 </div>
                 <div className="flex flex-col gap-2">
@@ -159,7 +159,7 @@ const RecipeForm = () => {
                         {!imgURL ?
                             <>
                                 <button className="text-nav p-3 rounded-lg border bg-bgColor ">Upload Image</button>
-                                <p>Wait for Image to load before submitting</p>
+                                <p><b>NOTE</b> :- Wait for Image to load before submitting</p>
                             </>
                             :
                             <></>
