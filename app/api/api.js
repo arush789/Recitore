@@ -65,3 +65,34 @@ export const getRecipeById = async (id) => {
     console.log("Failed to get Recipes", error);
   }
 };
+
+export const getSaves = async (mail) => {
+  try {
+    const res = await fetch(`http://localhost:3000/api/User/${mail}`, {
+      cache: "no-store",
+    });
+    return res.json();
+  } catch (error) {
+    console.log("Failed to get Recipes", error);
+  }
+};
+
+export const saveRecipe = async (mail, id) => {
+  try {
+    await fetch(`http://localhost:3000/api/User/${mail}/${id}`, {
+      method: "POST",
+    });
+  } catch (error) {
+    console.log("Failed to save Recipes", error);
+  }
+};
+
+export const removeSaveRecipe = async (mail, id) => {
+  try {
+    await fetch(`http://localhost:3000/api/User/${mail}/${id}`, {
+      method: "DELETE",
+    });
+  } catch (error) {
+    console.log("Failed to save Recipes", error);
+  }
+};

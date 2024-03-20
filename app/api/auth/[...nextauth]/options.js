@@ -1,3 +1,4 @@
+import User from "@/app/(models)/user";
 import GitHubProvider from "next-auth/providers/github";
 import GoogleProvider from "next-auth/providers/google";
 
@@ -48,7 +49,19 @@ const options = {
       return token;
     },
     async session({ session, token }) {
-      if (session?.user) session.user.role = token.role;
+      if (session?.user) {
+        session.user.role = token.role;
+        const existingUser = await User.findOne({
+          userEmail: session?.user?.email,
+        });
+        if (!existingUser) {
+          await User.create({
+            userName: session?.user?.name,
+            userEmail: session?.user?.email,
+            saves: [],
+          });
+        }
+      }
       return session;
     },
   },

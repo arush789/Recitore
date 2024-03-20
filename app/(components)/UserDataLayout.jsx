@@ -19,7 +19,7 @@ const UserDataLayout = async ({ children }) => {
                 <div className='flex gap-10 text-2xl justify-center lg:justify-normal'>
                     {/* <Link href="#" className='hover:font-bold'>Recipes</Link> */}
                     <Link href="/Profile/YourRecipes" className='hover:font-bold '>Recipes</Link>
-                    <Link href="#" className='hover:font-bold'>Saved</Link>
+                    <Link href="/Profile/Saved" className='hover:font-bold'>Saved</Link>
                     <Link href="/Profile/Reviews" className='hover:font-bold'>Reviews</Link>
                 </div>
                 <hr />
