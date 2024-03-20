@@ -99,7 +99,7 @@ export const removeSaveRecipe = async (mail, id) => {
 
 export const recipeRating = async (id, rating) => {
   try {
-    await fetch(`http://localhost:3000/api/Recipes/${id}/${rating}`, {
+    await fetch(`https://recitore.vercel.app/api/Recipes/${id}/${rating}`, {
       method: "POST",
     });
   } catch (error) {
