@@ -68,7 +68,7 @@ const ReviewCard = ({ id, name, email }) => {
 
     return (
         <>
-            <div className={`${urbanist.className} flex h-full w-full py-5 px-5 z-50`}>
+            <div className={`${urbanist.className} flex h-full w-full py-5 px-5 z-50 justify-center`}>
                 <div className='flex flex-col bg-nav w-[50rem] lg:w-full rounded-3xl py-5 px-5  text-nav-text'>
                     <div className='flex flex-col gap-5'>
                         <h1 className='font-bold text-4xl'>Your Review</h1>
