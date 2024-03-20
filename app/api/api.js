@@ -68,7 +68,7 @@ export const getRecipeById = async (id) => {
 
 export const getSaves = async (mail) => {
   try {
-    const res = await fetch(`http://localhost:3000/api/User/${mail}`, {
+    const res = await fetch(`https://recitore.vercel.app/api/User/${mail}`, {
       cache: "no-store",
     });
     return res.json();
@@ -79,7 +79,7 @@ export const getSaves = async (mail) => {
 
 export const saveRecipe = async (mail, id) => {
   try {
-    await fetch(`http://localhost:3000/api/User/${mail}/${id}`, {
+    await fetch(`https://recitore.vercel.app/api/User/${mail}/${id}`, {
       method: "POST",
     });
   } catch (error) {
@@ -89,7 +89,7 @@ export const saveRecipe = async (mail, id) => {
 
 export const removeSaveRecipe = async (mail, id) => {
   try {
-    await fetch(`http://localhost:3000/api/User/${mail}/${id}`, {
+    await fetch(`https://recitore.vercel.app/api/User/${mail}/${id}`, {
       method: "DELETE",
     });
   } catch (error) {
