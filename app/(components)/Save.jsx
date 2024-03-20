@@ -5,10 +5,11 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import { useSession } from 'next-auth/react';
 import { removeSaveRecipe, saveRecipe } from '../api/api';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 
 const Save = ({ recipeId, saveData }) => {
     const { data: session } = useSession();
-    const [isSaved, setIsSaved] = useState(saveData.userData[0].saves.some(item => item.includes(recipeId)));
+    const [isSaved, setIsSaved] = useState(saveData?.userData[0]?.saves?.some(item => item.includes(recipeId)));
     const router = useRouter()
 
     const handleSave = (mail, id) => {
@@ -33,9 +34,16 @@ const Save = ({ recipeId, saveData }) => {
                     </>
                 ) : (
                     <>
-                        <button onClick={() => handleSave(session?.user?.email, recipeId)}>
-                            <FavoriteBorderIcon /> Save
-                        </button>
+                        {!session ? (
+                            <Link href="/api/auth/signin">
+                                <FavoriteBorderIcon /> Save
+                            </Link>
+                        ) : (
+                            <button onClick={() => handleSave(session?.user?.email, recipeId)}>
+                                <FavoriteBorderIcon /> Save
+                            </button>
+                        )}
+
                     </>
                 )}
             </div>
