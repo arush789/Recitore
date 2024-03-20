@@ -14,6 +14,7 @@ const recipeSchema = new Schema(
     ratings: Number,
     category: String,
     imgURL: String,
+    likes: Number,
     reviews: [Review.schema],
   },
   {

@@ -120,7 +120,8 @@ const RecipeForm = () => {
         category: "",
         user: `${session?.user?.name}`,
         userMail: `${session?.user?.email}`,
-        imageURL: ""
+        imageURL: "",
+        likes: 0
     }
 
     const [formData, setFormData] = useState(startingFormData)

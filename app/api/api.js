@@ -96,3 +96,13 @@ export const removeSaveRecipe = async (mail, id) => {
     console.log("Failed to save Recipes", error);
   }
 };
+
+export const recipeRating = async (id, rating) => {
+  try {
+    await fetch(`http://localhost:3000/api/Recipes/${id}/${rating}`, {
+      method: "POST",
+    });
+  } catch (error) {
+    console.log("Failed to save Recipes", error);
+  }
+};

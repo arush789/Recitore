@@ -11,9 +11,8 @@ import Link from "next/link";
 
 const Home = async () => {
   const { recipes } = await getRecipes()
-  const limitedRecipes = recipes.filter((item, index) => index < 4);
+  const limitedRecipes = recipes.filter(item => item.likes > 3).slice(0, 3);
   const homelimitedRecipes = recipes.filter((item, index) => index < 8);
-
 
   return (
     <div className={`relative ${urbanist.className}`}>
@@ -24,7 +23,7 @@ const Home = async () => {
         </video>
       </div>
       <div className="py-20 flex flex-col gap-10">
-        <h1 className={` text-center text-4xl font-bold lg:text-5xl`}>Most Viewed</h1>
+        <h1 className={` text-center text-4xl font-bold lg:text-5xl`}>Most Liked</h1>
         <div className="flex flex-col items-center lg:justify-center lg:flex-row lg:gap-44 font-bold">
           <RecipeCard recipes={limitedRecipes} />
         </div>

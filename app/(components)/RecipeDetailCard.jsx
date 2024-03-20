@@ -20,6 +20,7 @@ const RecipeDetailCard = async (recipeId) => {
     const ratings = recipe.recipe.reviews.map((item) => (item.rating))
     const averageRating = Math.round(ratings.reduce((sum, a) => sum + a, 0) / ratings.length)
     const saves = await getSaves(session?.user?.email)
+
     const renderStars = (rating) => {
         const stars = [];
         for (let i = 0; i < 5; i++) {
@@ -31,7 +32,6 @@ const RecipeDetailCard = async (recipeId) => {
         }
         return stars;
     };
-
 
 
     const ingredients = recipe.recipe.ingredients.split("\n").filter(Boolean)
@@ -99,7 +99,7 @@ const RecipeDetailCard = async (recipeId) => {
                     </div>
                     <div className='w-full filter blur-md brightness-50 z-20 pointer-events-none'>
                         <div>
-                            <ReviewCard id={recipe.recipe._id} name={userName} email={userMail} />
+                            <ReviewCard id={recipe.recipe._id} name={userName} email={userMail} rating={averageRating} recipe={recipe} />
                             <Reviews recipeId={recipe.recipe._id} />
                         </div>
                     </div>
@@ -107,7 +107,7 @@ const RecipeDetailCard = async (recipeId) => {
 
                 :
                 <>
-                    <ReviewCard id={recipe.recipe._id} name={userName} email={userMail} />
+                    <ReviewCard id={recipe.recipe._id} name={userName} email={userMail} rating={averageRating} recipe={recipe} />
                     <Reviews recipeId={recipe.recipe._id} />
                 </>
             }
