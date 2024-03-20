@@ -1,14 +1,14 @@
 "use client"
 import { Urbanist } from "next/font/google";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import StarBorderIcon from '@mui/icons-material/StarBorder';
 import StarIcon from '@mui/icons-material/Star';
 import Reviews from "./Reviews";
+import { recipeRating } from "../api/api";
 const urbanist = Urbanist({ subsets: ["latin"] });
 
-const ReviewCard = ({ id, name, email }) => {
-
+const ReviewCard = ({ id, name, email, rating, recipe }) => {
     const router = useRouter()
     const recipeId = id
 
@@ -18,6 +18,12 @@ const ReviewCard = ({ id, name, email }) => {
         review: "",
         rating: 0
     }
+
+    useEffect(() => {
+        if (recipe.recipe.likes != rating) {
+            recipeRating(recipeId, rating)
+        }
+    })
 
     const [reviewFormData, setReviewFormData] = useState(startingData)
 
@@ -49,9 +55,11 @@ const ReviewCard = ({ id, name, email }) => {
             router.refresh();
             router.push(`/RecipeDetail/${recipeId}`);
             setReviewFormData(startingData)
+
         } catch (error) {
             console.error("Error submitting form:", error);
         }
+
     };
 
     const renderStars = () => {

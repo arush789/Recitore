@@ -16,7 +16,9 @@ const Saved = async () => {
 
     for (const id of savedRecipe.userData[0].saves) {
         const recipeData = await getRecipeById(id)
-        savedRecipesData.push(recipeData)
+        if (recipeData && recipeData.recipe !== null) {
+            savedRecipesData.push(recipeData)
+        }
     }
 
     return (
@@ -24,13 +26,13 @@ const Saved = async () => {
             <UserDataLayout>
                 <div className='flex flex-wrap gap-5 justify-center'>
                     {savedRecipesData.map((recipe, i) => (
-                        <Link key={i} href={`/RecipeDetail/${recipe.recipe._id} `}>
+                        <Link key={i} href={`/RecipeDetail/${recipe?.recipe?._id} `}>
                             <div className='bg-nav text-nav-text rounded-xl p-5 flex flex-col gap-4 hover:scale-110 transition duration-80 ease-out'>
                                 <picture>
-                                    <Image src={recipe.recipe.imgURL} className='rounded-xl object-cover w-[265px] h-52' width={500} height={500} alt='recipe-image' />
+                                    <Image src={recipe?.recipe?.imgURL} className='rounded-xl object-cover w-[265px] h-52' width={500} height={500} alt='recipe-image' />
                                 </picture>
-                                <h1 className={`${urbanist.className} text-3xl font-bold`}>{recipe.recipe.title}</h1>
-                                <p className='font-bold text-gray-500'>Added by {recipe.recipe.user}</p>
+                                <h1 className={`${urbanist.className} text-3xl font-bold`}>{recipe?.recipe?.title}</h1>
+                                <p className='font-bold text-gray-500'>Added by {recipe?.recipe?.user}</p>
                             </div>
                         </Link>
                     ))}
