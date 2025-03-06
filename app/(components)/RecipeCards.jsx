@@ -15,7 +15,8 @@ const RecipeCard = async (data) => {
                             </picture>
                         </div>
                         <div className='flex flex-col justify-center gap-2'>
-                            <h1 className='text-nav-text text-2xl font-bold'>{item.title}</h1>
+                            <h1 className='text-nav-text text-2xl font-bold'>{item.title.length > 20 ? item.title.slice(0, 20) + "..." : item.title}</h1>
+
                             <p className='text-gray-500 font-bold'>Added by {item.user}</p>
                         </div>
                     </div>
