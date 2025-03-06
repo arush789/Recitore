@@ -148,9 +148,32 @@ const RecipeForm = () => {
                 </div>
                 <div className="flex flex-col gap-2">
                     <label className="text-3xl">Category</label>
-                    <select name="category" onChange={handleChange} value={formData.category} className="text-nav-text p-3 rounded-lg" >
+                    <select
+                        name="category"
+                        onChange={handleChange}
+                        value={formData.category}
+                        className="text-nav-text p-3 rounded-lg"
+                    >
                         <option value="North Indian">North Indian</option>
                         <option value="South Indian">South Indian</option>
+                        <option value="Chinese">Chinese</option>
+                        <option value="Italian">Italian</option>
+                        <option value="Mexican">Mexican</option>
+                        <option value="Continental">Continental</option>
+                        <option value="Thai">Thai</option>
+                        <option value="Japanese">Japanese</option>
+                        <option value="Mediterranean">Mediterranean</option>
+                        <option value="French">French</option>
+                        <option value="Spanish">Spanish</option>
+                        <option value="Korean">Korean</option>
+                        <option value="Lebanese">Lebanese</option>
+                        <option value="American">American</option>
+                        <option value="Turkish">Turkish</option>
+                        <option value="Greek">Greek</option>
+                        <option value="Vietnamese">Vietnamese</option>
+                        <option value="African">African</option>
+                        <option value="Caribbean">Caribbean</option>
+                        <option value="Other">Other</option>
                     </select>
                 </div>
                 <div className="flex flex-col gap-2">
