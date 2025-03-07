@@ -1,7 +1,7 @@
 "use client"
 import { Urbanist } from "next/font/google";
 import { getRecipesBySearch } from "../api/api";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 const urbanist = Urbanist({ subsets: ["latin"] });
@@ -10,11 +10,24 @@ const urbanist = Urbanist({ subsets: ["latin"] });
 
 const SearchData = () => {
     const [searchData, setSearchData] = useState()
+    const [searchTerm, setSearchTerm] = useState("");
 
-    const handleSearch = async (e) => {
-        const recipe = await getRecipesBySearch(e.target.value)
-        setSearchData(recipe)
-    }
+    useEffect(() => {
+        const delaySearch = setTimeout(async () => {
+            if (searchTerm) {
+                const recipe = await getRecipesBySearch(searchTerm);
+                setSearchData(recipe);
+            }
+        }, 300);
+
+        return () => clearTimeout(delaySearch);
+    }, [searchTerm]);
+
+    const handleSearch = (e) => {
+        setSearchTerm(e.target.value);
+    };
+
+    console.log(searchTerm)
 
     return (
         <>
