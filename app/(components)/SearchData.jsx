@@ -17,17 +17,19 @@ const SearchData = () => {
             if (searchTerm) {
                 const recipe = await getRecipesBySearch(searchTerm);
                 setSearchData(recipe);
+            } else {
+                setSearchData(null);
             }
         }, 300);
 
         return () => clearTimeout(delaySearch);
     }, [searchTerm]);
 
+
     const handleSearch = (e) => {
         setSearchTerm(e.target.value);
     };
 
-    console.log(searchTerm)
 
     return (
         <>
